@@ -1,0 +1,15 @@
+{
+  "Serilog": {
+    "MinimumLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "System": "Warning"
+    },
+    "File": {
+      "Path": "log.txt",
+      "Append": true,
+      "MaxFileSize": 1048576,
+      "MaxRollingFiles": 3
+    }
+  }
+}

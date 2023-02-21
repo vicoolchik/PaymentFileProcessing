@@ -1,0 +1,38 @@
+﻿Installing assembly 'C:\TaskRadency\task1\PaymentFilesProcessing\PaymentProcessingService\bin\Debug\PaymentProcessingService.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\TaskRadency\task1\PaymentFilesProcessing\PaymentProcessingService\bin\Debug\PaymentProcessingService.InstallLog
+   assemblypath = C:\TaskRadency\task1\PaymentFilesProcessing\PaymentProcessingService\bin\Debug\PaymentProcessingService.exe
+   logtoconsole = 
+Installing service PaymentFilesProcessingServise...
+Service PaymentFilesProcessingServise has been successfully installed.
+Creating EventLog source PaymentFilesProcessingServise in log Application...
+Committing assembly 'C:\TaskRadency\task1\PaymentFilesProcessing\PaymentProcessingService\bin\Debug\PaymentProcessingService.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\TaskRadency\task1\PaymentFilesProcessing\PaymentProcessingService\bin\Debug\PaymentProcessingService.InstallLog
+   assemblypath = C:\TaskRadency\task1\PaymentFilesProcessing\PaymentProcessingService\bin\Debug\PaymentProcessingService.exe
+   logtoconsole = 
+Uninstalling assembly 'C:\TaskRadency\task1\PaymentFilesProcessing\PaymentProcessingService\bin\Debug\PaymentProcessingService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\TaskRadency\task1\PaymentFilesProcessing\PaymentProcessingService\bin\Debug\PaymentProcessingService.InstallLog
+   assemblypath = C:\TaskRadency\task1\PaymentFilesProcessing\PaymentProcessingService\bin\Debug\PaymentProcessingService.exe
+Removing EventLog source PaymentFilesProcessingServise.
+Service PaymentFilesProcessingServise is being removed from the system...
+Service PaymentFilesProcessingServise was successfully removed from the system.
+Installing assembly 'C:\TaskRadency\task1\PaymentFilesProcessing\PaymentProcessingService\bin\Debug\PaymentProcessingService.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\TaskRadency\task1\PaymentFilesProcessing\PaymentProcessingService\bin\Debug\PaymentProcessingService.InstallLog
+   assemblypath = C:\TaskRadency\task1\PaymentFilesProcessing\PaymentProcessingService\bin\Debug\PaymentProcessingService.exe
+   logtoconsole = 
+Installing service PaymentFilesProcessingServise...
+Service PaymentFilesProcessingServise has been successfully installed.
+Creating EventLog source PaymentFilesProcessingServise in log Application...
+Committing assembly 'C:\TaskRadency\task1\PaymentFilesProcessing\PaymentProcessingService\bin\Debug\PaymentProcessingService.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\TaskRadency\task1\PaymentFilesProcessing\PaymentProcessingService\bin\Debug\PaymentProcessingService.InstallLog
+   assemblypath = C:\TaskRadency\task1\PaymentFilesProcessing\PaymentProcessingService\bin\Debug\PaymentProcessingService.exe
+   logtoconsole = 

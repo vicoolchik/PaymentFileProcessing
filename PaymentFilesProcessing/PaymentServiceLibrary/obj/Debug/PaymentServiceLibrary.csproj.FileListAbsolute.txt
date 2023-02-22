@@ -187,3 +187,4 @@ C:\TaskRadency\task1\PaymentFilesProcessing\PaymentServiceLibrary\obj\Debug\Paym
 C:\TaskRadency\task1\PaymentFilesProcessing\PaymentServiceLibrary\obj\Debug\PaymentServiceLibrary.csproj.CopyComplete
 C:\TaskRadency\task1\PaymentFilesProcessing\PaymentServiceLibrary\obj\Debug\DAL.dll
 C:\TaskRadency\task1\PaymentFilesProcessing\PaymentServiceLibrary\obj\Debug\DAL.pdb
+C:\TaskRadency\task1\PaymentFilesProcessing\PaymentServiceLibrary\obj\Debug\PaymentServiceLibrary.csproj.AssemblyReference.cache

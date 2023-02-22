@@ -2,17 +2,23 @@
 using System.IO;
 using PaymentServiceLibrary.Interfaces;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using PaymentServiceLibrary.Model.MetaModel;
 
 namespace PaymentServiceLibrary.Concrete
 {
     public partial class FileWatcher: IFileWatcher
     {
-        public event EventHandler<FileEventArgs> FileCreated;
         private readonly IFileProcessorFactory _fileProcessorFactory;
         private readonly FileSystemWatcher _fileWatcher;
         private readonly string _inputfolderPath;
         private readonly string _outputfolderPath;
         private readonly ILogger<FileWatcher> _logger;
+
+        private int _parsedFilesCount;
+        private int _parsedLinesCount;
+        private int _foundErrorsCount;
+        private List<string> _invalidFiles = new List<string>();
 
         public FileWatcher(string outputfolderPath, string inputfolderPath, ILogger<FileWatcher> logger, IFileProcessorFactory fileProcessorFactory)
         {
@@ -23,6 +29,10 @@ namespace PaymentServiceLibrary.Concrete
             _fileWatcher.Created += OnCreated;
             _fileWatcher.Error += OnError;
             _logger = logger;
+            _parsedFilesCount = 0;
+            _parsedLinesCount = 0;
+            _foundErrorsCount = 0;
+            _invalidFiles = new List<string>();
         }
 
         public void StartWatching()
@@ -53,7 +63,11 @@ namespace PaymentServiceLibrary.Concrete
             try
             {
                 // Process the file
-                processor.Process(e.FullPath);
+                ProcessResult result = processor.Process(e.FullPath);
+                _parsedFilesCount++;
+                _parsedLinesCount += result.ParsedLinesCount;
+                _foundErrorsCount += result.FoundErrorsCount;
+                _invalidFiles.AddRange(result.InvalidFiles);
 
                 _logger.LogInformation("File processed successfully: {FilePath}", e.FullPath);
             }
@@ -62,5 +76,13 @@ namespace PaymentServiceLibrary.Concrete
                 _logger.LogError(ex, "Error processing file: {FilePath}", e.FullPath);
             }
         }
+
+        public int ParsedFilesCount => _parsedFilesCount;
+
+        public int ParsedLinesCount => _parsedLinesCount;
+
+        public int FoundErrorsCount => _foundErrorsCount;
+
+        public string[] InvalidFiles => _invalidFiles.ToArray();
     }
 }

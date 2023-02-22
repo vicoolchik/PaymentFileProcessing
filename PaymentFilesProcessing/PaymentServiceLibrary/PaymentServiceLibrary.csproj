@@ -230,7 +230,7 @@
     <Compile Include="Interfaces\Process\IPaymentDataWriter.cs" />
     <Compile Include="Interfaces\Process\IPaymentFileParser.cs" />
     <Compile Include="Model\InputModel\PaymentData.cs" />
-    <Compile Include="Model\MetaModel\MetaData.cs" />
+    <Compile Include="Model\MetaModel\ProcessResult.cs" />
     <Compile Include="Model\OutputModel\PayerSummary.cs" />
     <Compile Include="Model\OutputModel\PaymentSummary.cs" />
     <Compile Include="Model\OutputModel\ServiceSummary.cs" />

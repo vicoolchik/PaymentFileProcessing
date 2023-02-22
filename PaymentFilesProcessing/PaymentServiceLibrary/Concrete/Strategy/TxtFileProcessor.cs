@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PaymentServiceLibrary.Model.MetaModel;
 
 namespace PaymentServiceLibrary.Concrete.Strategy
 {
@@ -36,14 +37,16 @@ namespace PaymentServiceLibrary.Concrete.Strategy
             _writer = writer;
         }
 
-        public void Process(string filePath)
+        public ProcessResult Process(string filePath)
         {
+            ProcessResult result = new ProcessResult();
             try
             {
                 _logger.LogInformation($"Processing file: {filePath}");
 
                 // Step 1: Parse the TXT file and obtain the payment data
                 IEnumerable<PaymentData> paymentData = _parser.Parse(filePath);
+                result.ParsedLinesCount = paymentData.Count();
 
                 // Step 2: Validate the payment data
                 PaymentDataValidationResult validationResult = _validator.Validate(paymentData);
@@ -53,11 +56,15 @@ namespace PaymentServiceLibrary.Concrete.Strategy
                     foreach (string errorMessage in validationResult.ErrorMessages)
                     {
                         _logger.LogError(errorMessage);
+                        result.FoundErrorsCount++;
                     }
                 }
 
                 // Filter out the invalid payment data and return only the valid ones.
                 IEnumerable<PaymentData> validPaymentData = paymentData.Where(pd => !validationResult.ErrorMessages.Contains(pd.Id));
+                IEnumerable<PaymentData> invalidPaymentData = paymentData.Except(validPaymentData);
+
+                result.InvalidFiles = invalidPaymentData.Any() ? new string[] { filePath } : new string[0];
 
                 // Step 3: Transform the payment data into the desired format
                 IEnumerable<PaymentSummary> transformedData = _transformer.Transform(validPaymentData);
@@ -71,6 +78,8 @@ namespace PaymentServiceLibrary.Concrete.Strategy
             {
                 _logger.LogError(ex, $"Error processing file: {filePath}");
             }
+
+            return result;
         }
     }
 }

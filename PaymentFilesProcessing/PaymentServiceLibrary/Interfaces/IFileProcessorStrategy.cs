@@ -1,7 +1,9 @@
-﻿namespace PaymentServiceLibrary.Interfaces
+﻿using PaymentServiceLibrary.Model.MetaModel;
+
+namespace PaymentServiceLibrary.Interfaces
 {
     public interface IFileProcessorStrategy
     {
-        void Process(string filePath);
+        ProcessResult Process(string filePath);
     }
 }

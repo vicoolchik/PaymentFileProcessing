@@ -4,14 +4,17 @@ namespace PaymentServiceLibrary.Interfaces
 {
     public interface IFileWatcher
     {
-        event EventHandler<FileEventArgs> FileCreated;
-
         void StartWatching();
         void StopWatching();
+        int ParsedFilesCount { get; }
+        int ParsedLinesCount { get; }
+        int FoundErrorsCount { get; }
+        string[] InvalidFiles { get; }
     }
 
     public class FileEventArgs : EventArgs
     {
         public string FilePath { get; set; }
     }
+
 }
